@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  mysql2psql:
+    environment:
+      - mysql_host
+      - mysql_name
+      - mysql_username
+      - mysql_password
+      - psql_host
+      - psql_name
+      - psql_username
+      - psql_password
+      - MYSQL_HOSTENTRY
+      - PSQL_HOSTENTRY
+    build:
+      context: .
+    extra_hosts:
+      - "${MYSQL_HOSTENTRY}"
+      - "${PSQL_HOSTENTRY}"
+    logging:
+      driver: json-file
+
